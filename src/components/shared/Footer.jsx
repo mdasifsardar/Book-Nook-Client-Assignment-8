@@ -1,6 +1,7 @@
 import { BookOpen, Mail, MapPin, Phone } from "lucide-react";
-import { FaFacebook, FaXTwitter, FaInstagram, FaGithub } from "react-icons/fa6";
+
 import Link from "next/link";
+import { FaFacebook, FaGithub, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const contactItems = [
   { icon: Mail, label: "Email", value: "support@booknook.com" },
