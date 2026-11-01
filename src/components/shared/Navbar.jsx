@@ -18,17 +18,17 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <nav className="sticky top-0 z-50 bg-[#1E3A34] border-b border-[#12352C]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* 1. Left Side: Website Logo & Name */}
           <Link
             href="/"
-            className="flex items-center gap-2 font-bold text-xl text-slate-900 hover:opacity-90 transition-opacity"
+            className="flex items-center gap-2 font-bold text-xl text-white hover:opacity-90 transition-opacity"
           >
-            <BookOpen className="w-7 h-7 text-slate-900" />
+            <BookOpen className="w-7 h-7 text-[#C89B5A]" />
             <span className="tracking-tight">
-              Book<span className="text-orange-500">Nook</span>
+              Book<span className="text-[#C89B5A]">Nook</span>
             </span>
           </Link>
 
@@ -42,8 +42,8 @@ export default function Navbar() {
                   href={link.href}
                   className={`text-sm font-medium transition-colors ${
                     pathname === link.href
-                      ? "text-slate-900 underline underline-offset-8 decoration-orange-500 py-1"
-                      : "text-slate-600 hover:text-orange-500"
+                      ? "text-[#C89B5A] underline underline-offset-8 decoration-[#C89B5A] py-1"
+                      : "text-[#E8E4DC]/75 hover:text-[#C89B5A]"
                   }`}
                 >
                   {link.label}
@@ -58,14 +58,14 @@ export default function Navbar() {
           {/* 3. Right Side: Login & Register Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <Link
-              href="/login"
-              className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-orange-500 transition-colors"
+              href="/sign-in"
+              className="px-4 py-2 text-sm font-medium text-white/80 hover:text-[#C89B5A] transition-colors"
             >
               Login
             </Link>
             <Link
-              href="/register"
-              className="px-4 py-2 text-sm font-semibold text-white bg-orange-500 hover:bg-orange-600 rounded-lg shadow-sm transition-all hover:shadow-md"
+              href="/sign-up"
+              className="px-4 py-2 text-sm font-semibold text-[#1E3A34] bg-[#C89B5A] hover:bg-[#B78A4C] rounded-lg shadow-sm transition-all hover:shadow-md"
             >
               Sign Up
             </Link>
@@ -75,7 +75,7 @@ export default function Navbar() {
           <div className="flex md:hidden items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors"
+              className="p-2 rounded-lg text-[#E8E4DC]/80 hover:text-white hover:bg-white/10 focus:outline-none transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
@@ -90,7 +90,7 @@ export default function Navbar() {
 
       {/* 4. Mobile Responsive Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200 px-4 pt-2 pb-4 space-y-1">
+        <div className="md:hidden bg-[#1E3A34] border-t border-[#12352C] px-4 pt-2 pb-4 space-y-1">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -100,26 +100,26 @@ export default function Navbar() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive
-                    ? "bg-orange-500/10 text-slate-900"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    ? "bg-[#C89B5A]/15 text-[#C89B5A]"
+                    : "text-[#E8E4DC]/75 hover:bg-white/5 hover:text-white"
                 }`}
               >
                 {link.label}
               </Link>
             );
           })}
-          <div className="pt-2 flex flex-col gap-2 border-t border-slate-100 mt-2">
+          <div className="pt-2 flex flex-col gap-2 border-t border-white/10 mt-2">
             <Link
-              href="/login"
+              href="/sign-in"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-50"
+              className="block px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:bg-white/5"
             >
               Login
             </Link>
             <Link
-              href="/register"
+              href="/sign-up"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded-md text-sm font-semibold text-white text-center shadow-sm bg-orange-500 hover:bg-orange-600"
+              className="block px-3 py-2 rounded-md text-sm font-semibold text-[#1E3A34] text-center shadow-sm bg-[#C89B5A] hover:bg-[#B78A4C]"
             >
               Sign Up
             </Link>

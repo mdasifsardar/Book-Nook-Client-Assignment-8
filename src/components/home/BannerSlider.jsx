@@ -37,7 +37,7 @@ export default function BannerSlider() {
       <Swiper
         modules={[A11y, Autoplay, Pagination]}
         style={{
-          "--swiper-pagination-color": "#D97757",
+          "--swiper-pagination-color": "#C89B5A",
           "--swiper-pagination-bullet-inactive-color": "#ffffff",
         }}
         slidesPerView={1}
@@ -64,7 +64,7 @@ export default function BannerSlider() {
 
               <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 pb-20 sm:px-6 sm:py-20 sm:pb-24 lg:px-8">
                 <div className="max-w-xl lg:max-w-2xl">
-                  <p className="text-xs font-medium tracking-[0.2em] text-[#D97757]/90 uppercase sm:text-sm">
+                  <p className="text-xs font-medium tracking-[0.2em] text-[#C89B5A]/90 uppercase sm:text-sm">
                     {slide.eyebrow}
                   </p>
                   <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-6xl">
@@ -75,7 +75,7 @@ export default function BannerSlider() {
                   </p>
                   <Button
                     size="lg"
-                    className="mt-8 bg-[#D97757] text-white"
+                    className="mt-8 bg-[#C89B5A] text-[#1E3A34] hover:bg-[#B78A4C]"
                     nativeButton={false}
                     render={<Link href="/all-books" />}
                   >
