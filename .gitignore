@@ -50,10 +50,10 @@ next-env.d.ts
 **/MyBookCard.jsx
 **/MyBorrowBooks.jsx
 
-    
+
 
 //
-**/proxy.js
+
 **/SmoothScroll.jsx
 # app
 **/not-found.jsx
