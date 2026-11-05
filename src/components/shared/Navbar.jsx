@@ -41,6 +41,7 @@ export default function Navbar() {
   const handleSignOut = () => {
     authClient.signOut();
 
+    toast.success("Sign out successfully!");
     router.push("/");
   };
 
