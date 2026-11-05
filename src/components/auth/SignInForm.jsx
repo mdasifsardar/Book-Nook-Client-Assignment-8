@@ -13,11 +13,15 @@ import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { Field, FieldDescription, FieldSeparator } from "../ui/field";
+import { Field, FieldDescription } from "../ui/field";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import Link from "next/link";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 const SignInForm = () => {
+  const [showPassword, setShowPassword] = useState(false);
   //    Use Router
   const router = useRouter();
 
@@ -107,21 +111,27 @@ const SignInForm = () => {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+          <div className="relative">
             <Input
               id="password"
-              type="password"
               name="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Your Password"
-              // value={password}
-              // onChange={handlePasswordChange}
               required
             />
 
-            {/* {error && (
-              <p className="text-xs text-red-500 font-medium mt-1">{error}</p>
-            )} */}
+            {/* Eye Toggle Button */}
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+            >
+              {showPassword ? (
+                <EyeOff className="w-4 h-4" />
+              ) : (
+                <Eye className="w-4 h-4" />
+              )}
+            </button>
           </div>
 
           <Field>
@@ -133,9 +143,12 @@ const SignInForm = () => {
             </Button>
             <FieldDescription className="text-sm">
               Don&apos;t have an account?
-              <a href="#" className="text-[#C89B5A] ml-1 hover:text-[#B78A4C]">
+              <Link
+                href="/sign-up"
+                className="text-[#C89B5A] ml-1 hover:text-[#B78A4C]"
+              >
                 Sign up
-              </a>
+              </Link>
             </FieldDescription>
           </Field>
 

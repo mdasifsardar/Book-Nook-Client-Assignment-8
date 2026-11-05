@@ -39,3 +39,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# src
+**/components/books/
+**/proxy.js
+**/HowBorrowingWorks.jsx
+**/NewArrivals.jsx
+**/TopCategories.jsx
+**/SmoothScroll.jsx
+# app
+**/not-found.jsx
+**/add-books
+**/all-books
+**/my-books
+**/my-borrows
