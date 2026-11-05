@@ -9,7 +9,9 @@ const MyBorrowsPage = async () => {
 
   const user = session?.user;
 
-  const res = await fetch(`http://localhost:5000/borrow/${user?.email}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/borrow/${user?.email}`,
+  );
   const borrowedBook = await res.json();
 
   return (

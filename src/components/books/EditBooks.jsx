@@ -17,6 +17,7 @@ import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 const fieldClass =
   "bg-[#FAF6EF]/10 border-[#12352C] text-[#E8E4DC] placeholder:text-[#E8E4DC]/40 focus-visible:ring-[#C89B5A] focus-visible:ring-1";
@@ -36,16 +37,21 @@ const EditBooks = ({ book }) => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      const res = await fetch(`http://localhost:5000/my-book/${book._id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
+      const token = await getTokenFromClient();
+
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/my-book/${book._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      });
+      );
 
       const editBook = await res.json();
-      console.log(editBook);
 
       if (!res.ok) {
         toast.error(editBook?.message || "Book edit failed!");

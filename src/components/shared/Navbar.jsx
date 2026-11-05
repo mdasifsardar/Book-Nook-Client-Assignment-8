@@ -104,6 +104,18 @@ export default function Navbar() {
                     <PopoverDescription className="text-[#E8E4DC]/75 text-sm">
                       {user?.email}
                     </PopoverDescription>
+
+                    <Link
+                      href="/profile"
+                      className={`my-2 block w-full cursor-pointer rounded-md border px-3 py-2 text-center text-sm font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-[#C89B5A]/20 ${
+                        pathname === "/profile"
+                          ? "border-[#C89B5A] bg-[#C89B5A] text-[#1E3A34] hover:bg-[#B78A4C]"
+                          : "border-[#C89B5A]/40 text-[#C89B5A] hover:border-[#C89B5A] hover:bg-[#C89B5A]/10"
+                      }`}
+                    >
+                      My Profile
+                    </Link>
+
                     <Button
                       onClick={handleSignOut}
                       variant="destructive"

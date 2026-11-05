@@ -18,6 +18,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 const MyBookCard = ({ myBook }) => {
   //          Redirect Router
@@ -26,9 +27,18 @@ const MyBookCard = ({ myBook }) => {
   //            Delete Book
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:5000/my-book/${id}`, {
-        method: "DELETE",
-      });
+      const token = await getTokenFromClient();
+
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/my-book/${id}`,
+        {
+          method: "DELETE",
+
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        },
+      );
 
       const data = await res.json();
 

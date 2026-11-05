@@ -4,22 +4,27 @@ import Image from "next/image";
 import { ArrowLeft, BookOpen } from "lucide-react";
 import BorrowDialog from "@/components/books/BorrowDialog";
 import { notFound } from "next/navigation";
+import { getTokenFromServer } from "@/lib/getTokenFromServer";
 
 const BookDetailsPage = async ({ params }) => {
   const { id } = await params;
 
-  const res = await fetch(`http://localhost:5000/book/${id}`, {
+  const token = await getTokenFromServer();
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/book/${id}`, {
     headers: {
-      authorization: "user logged in",
+      authorization: `Bearer ${token}`,
     },
   });
   if (!res.ok) {
+    console.log(res.status);
     notFound();
   }
 
   const book = await res.json();
 
   if (!book) {
+    console.log(res.status);
     notFound();
   }
 

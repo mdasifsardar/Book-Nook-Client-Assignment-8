@@ -41,7 +41,7 @@ const BorrowDialog = ({ book }) => {
         returnDate: returnDate,
       };
 
-      const res = await fetch(`http://localhost:5000/my-borrow`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/my-borrow`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

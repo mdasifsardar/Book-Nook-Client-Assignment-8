@@ -4,16 +4,26 @@ import { PlusCircle } from "lucide-react";
 import MyBookCard from "@/components/books/MyBookCard";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { getTokenFromServer } from "@/lib/getTokenFromServer";
 
 const MyBooksPage = async () => {
   //
+
   const session = await auth.api.getSession({
     headers: await headers(),
   });
   const user = session?.user;
-  const res = await fetch(`http://localhost:5000/my-book/${user?.email}`);
+
+  const token = await getTokenFromServer();
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/my-book/${user?.email}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    },
+  );
   const myBook = await res.json();
-  console.log(myBook);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">

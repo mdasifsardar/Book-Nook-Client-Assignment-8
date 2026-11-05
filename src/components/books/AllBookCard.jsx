@@ -5,9 +5,8 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 
 export default async function AllBookCard() {
-  const res = await fetch("http://localhost:5000/books");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`);
   const data = await res.json();
-  console.log(data);
 
   return (
     <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">

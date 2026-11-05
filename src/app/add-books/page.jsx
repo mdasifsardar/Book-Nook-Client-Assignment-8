@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import AddBookCard from "@/components/books/AddBookCard";
 import { authClient } from "@/lib/auth-client";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 export default function AddBookForm() {
   //            User session management
@@ -28,20 +29,23 @@ export default function AddBookForm() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/add-books", {
+      const token = await getTokenFromClient();
+
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add-books`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(books),
       });
-      const data = await res.json();
+      const result = await res.json();
 
       if (res.ok) {
         toast.success("Book added successfully!");
         e.target.reset();
       } else {
-        toast.error(data.message || "Failed to add book!");
+        toast.error(result.message || "Failed to add book!");
       }
     } catch (error) {
       toast.error(error?.message || "Something went wrong!");

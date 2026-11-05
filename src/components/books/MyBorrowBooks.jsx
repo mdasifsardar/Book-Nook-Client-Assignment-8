@@ -6,6 +6,7 @@ import { BookOpen, CalendarDays, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { getTokenFromClient } from "@/lib/getTokenFromClient";
 
 const MyBorrowBooks = ({ borrowedBook }) => {
   //            Router
@@ -14,11 +15,15 @@ const MyBorrowBooks = ({ borrowedBook }) => {
   //
   const handleReturnBook = async (id) => {
     try {
+      const token = await getTokenFromClient();
       const res = await fetch(
-        `http://localhost:5000/borrow/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/borrow/${id}`,
 
         {
           method: "PATCH",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
         },
       );
       const data = await res.json();
