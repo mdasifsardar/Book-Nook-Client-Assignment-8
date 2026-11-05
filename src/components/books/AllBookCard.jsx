@@ -5,7 +5,9 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 
 export default async function AllBookCard() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`, {
+    cache: "no-store",
+  });
   const data = await res.json();
 
   return (
@@ -20,7 +22,7 @@ export default async function AllBookCard() {
           <div className="relative overflow-hidden   aspect-[3/4] ">
             <Image
               src={book.image}
-              alt={`Cover of ${book.title}`}
+              alt={`Cover of ${book.name}`}
               width={300}
               height={300}
               loading="eager"
