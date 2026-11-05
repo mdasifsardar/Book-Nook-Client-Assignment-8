@@ -42,10 +42,7 @@ next-env.d.ts
 
 
 # src
-
-**/EditBooks.jsx
 **/BorrowDialog.jsx
-
 **/MyBorrowBooks.jsx
 
 
@@ -53,6 +50,4 @@ next-env.d.ts
 
 
 # app
-**/not-found.jsx
-
 **/my-borrows
