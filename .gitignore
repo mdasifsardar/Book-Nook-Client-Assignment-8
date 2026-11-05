@@ -42,10 +42,20 @@ next-env.d.ts
 
 
 # src
-**/components/books/
+**/AddBookCard.jsx
+**/AllBookCard.jsx
+**/BookCard.jsx
+**/EditBooks.jsx
+**/BorrowDialog.jsx
+**/MyBookCard.jsx
+**/MyBorrowBooks.jsx
+
+
+
+//
 **/proxy.js
 **/HowBorrowingWorks.jsx
-**/NewArrivals.jsx
+
 **/TopCategories.jsx
 **/SmoothScroll.jsx
 # app
