@@ -42,7 +42,7 @@ next-env.d.ts
 
 
 # src
-**/AddBookCard.jsx
+
 **/AllBookCard.jsx
 **/BookCard.jsx
 **/EditBooks.jsx
@@ -59,7 +59,7 @@ next-env.d.ts
 **/SmoothScroll.jsx
 # app
 **/not-found.jsx
-**/add-books
+
 **/all-books
 **/my-books
 **/my-borrows
