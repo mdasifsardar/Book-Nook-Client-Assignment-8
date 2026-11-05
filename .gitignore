@@ -56,7 +56,6 @@ next-env.d.ts
 **/proxy.js
 
 
-**/TopCategories.jsx
 **/SmoothScroll.jsx
 # app
 **/not-found.jsx
